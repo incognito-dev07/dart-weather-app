@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Weather App</title>
+  <meta charset="UTF-8">  
+  <meta name="description" content="Real-time weather app with accurate forecasts">
+  <meta name="theme-color" content="#9d4edd">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1><i class="fas fa-cloud-sun-rain"></i> Weather</h1>
+      <p>Real-time weather updates for any city worldwide</p>
+    </header>
+
+    <main class="main">
+      <div class="weather-card">
+        <div class="search-box">
+          <div class="input-wrapper">
+            <i class="fas fa-search input-icon"></i>
+            <input type="text" id="cityInput" placeholder="Search city..." autocomplete="off" enterkeyhint="search">
+            <button id="searchBtn" class="search-btn">
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div id="initialState" class="initial-state">
+          <i class="fas fa-globe-americas"></i>
+          <p>Search for a city to see weather details</p>
+        </div>
+
+        <div id="statusMessage" class="status hidden">
+          <i class="fas fa-spinner fa-pulse"></i>
+          <span>Loading...</span>
+        </div>
+
+        <div id="errorMessage" class="status hidden">
+          <i class="fas fa-exclamation-circle"></i>
+          <span id="errorText"></span>
+        </div>
+
+        <div id="weatherResult" class="weather-result hidden">
+          <div class="weather-main">
+            <div class="weather-location">
+              <i class="fas fa-location-dot"></i>
+              <h2 id="cityName"></h2>
+              <span id="countryCode" class="country-badge"></span>
+            </div>
+            <div class="weather-temp" id="weatherIconDisplay">
+              <i id="weatherIcon" class="fas fa-sun"></i>
+              <div class="temp-group">
+                <span id="temperature" class="temperature">0°C</span>
+                <span id="description" class="description">Clear sky</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="weather-details">
+            <div class="detail-card">
+              <i class="fas fa-temperature-high"></i>
+              <div class="detail-info">
+                <span class="detail-label">Feels Like</span>
+                <span id="feelsLike" class="detail-value">0°C</span>
+              </div>
+            </div>
+            <div class="detail-card">
+              <i class="fas fa-droplet"></i>
+              <div class="detail-info">
+                <span class="detail-label">Humidity</span>
+                <span id="humidity" class="detail-value">0%</span>
+              </div>
+            </div>
+            <div class="detail-card">
+              <i class="fas fa-wind"></i>
+              <div class="detail-info">
+                <span class="detail-label">Wind Speed</span>
+                <span id="windSpeed" class="detail-value">0 km/h</span>
+              </div>
+            </div>
+            <div class="detail-card">
+              <i class="fas fa-compress-arrows-alt"></i>
+              <div class="detail-info">
+                <span class="detail-label">Pressure</span>
+                <span id="pressure" class="detail-value">0 hPa</span>
+              </div>
+            </div>
+            <div class="detail-card">
+              <i class="fas fa-eye"></i>
+              <div class="detail-info">
+                <span class="detail-label">Visibility</span>
+                <span id="visibility" class="detail-value">0 km</span>
+              </div>
+            </div>
+            <div class="detail-card">
+              <i class="fas fa-cloud"></i>
+              <div class="detail-info">
+                <span class="detail-label">Cloudiness</span>
+                <span id="cloudiness" class="detail-value">0%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sun-times">
+            <div class="sun-item">
+              <i class="fas fa-sunrise"></i>
+              <span class="sun-label">Sunrise</span>
+              <span id="sunrise" class="sun-time">00:00</span>
+            </div>
+            <div class="sun-item">
+              <i class="fas fa-sunset"></i>
+              <span class="sun-label">Sunset</span>
+              <span id="sunset" class="sun-time">00:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p><i class="far fa-copyright"></i> 2026 Incognito. All rights reserved</p>
+      <p class="footer-note">Powered by OpenWeatherMap</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
