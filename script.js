@@ -4,7 +4,8 @@ const initialState = document.getElementById('initialState');
 const statusMessage = document.getElementById('statusMessage');
 const errorMessage = document.getElementById('errorMessage');
 const errorText = document.getElementById('errorText');
-const weatherResult = document.getElementById('weatherResult');
+const weatherMainCard = document.getElementById('weatherMainCard');
+const weatherDetailsCard = document.getElementById('weatherDetailsCard');
 
 const DEGREE = '\u00B0';
 
@@ -42,7 +43,8 @@ function displayWeather(data) {
     initialState.classList.add('hidden');
     statusMessage.classList.add('hidden');
     errorMessage.classList.add('hidden');
-    weatherResult.classList.remove('hidden');
+    weatherMainCard.classList.remove('hidden');
+    weatherDetailsCard.classList.remove('hidden');
 
     document.getElementById('cityName').textContent = data.city;
     document.getElementById('countryCode').textContent = data.country;
@@ -62,30 +64,22 @@ function displayWeather(data) {
 }
 
 function getWeatherIcon(code) {
-    const iconMap = {
-        200: 'fa-bolt',
-        300: 'fa-cloud-rain',
-        500: 'fa-cloud-showers-heavy',
-        600: 'fa-snowflake',
-        700: 'fa-smog',
-        800: 'fa-sun',
-        801: 'fa-cloud-sun',
-        802: 'fa-cloud',
-        803: 'fa-cloud',
-        804: 'fa-cloud'
-    };
-
-    for (const [key, icon] of Object.entries(iconMap)) {
-        if (code >= parseInt(key) && code < parseInt(key) + 100) {
-            return icon;
-        }
-    }
+    if (code >= 200 && code < 300) return 'fa-bolt';
+    if (code >= 300 && code < 400) return 'fa-cloud-rain';
+    if (code >= 500 && code < 510) return 'fa-cloud-showers-heavy';
+    if (code >= 510 && code < 600) return 'fa-cloud-rain';
+    if (code >= 600 && code < 700) return 'fa-snowflake';
+    if (code >= 700 && code < 800) return 'fa-smog';
+    if (code === 800) return 'fa-sun';
+    if (code === 801) return 'fa-cloud-sun';
+    if (code >= 802) return 'fa-cloud';
     return 'fa-sun';
 }
 
 function showLoading() {
     initialState.classList.add('hidden');
-    weatherResult.classList.add('hidden');
+    weatherMainCard.classList.add('hidden');
+    weatherDetailsCard.classList.add('hidden');
     errorMessage.classList.add('hidden');
     statusMessage.classList.remove('hidden');
     statusMessage.innerHTML = '<i class="fas fa-spinner fa-pulse"></i><span>Loading...</span>';
@@ -93,7 +87,8 @@ function showLoading() {
 
 function showError(message) {
     initialState.classList.add('hidden');
-    weatherResult.classList.add('hidden');
+    weatherMainCard.classList.add('hidden');
+    weatherDetailsCard.classList.add('hidden');
     statusMessage.classList.add('hidden');
     errorMessage.classList.remove('hidden');
     errorText.textContent = message;

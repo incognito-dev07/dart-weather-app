@@ -1,11 +1,15 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:dotenv/dotenv.dart' as dotenv;
 
 void main() async {
-  final apiKey = Platform.environment['OPENWEATHER_API_KEY'] ?? '';
+  // Load from .env file for local development
+  final env = dotenv.DotEnv(includePlatformEnvironment: true)..load();
+  final apiKey = env['OPENWEATHER_API_KEY'] ?? '';
+
   if (apiKey.isEmpty) {
-    print('ERROR: OPENWEATHER_API_KEY not set');
+    print('ERROR: OPENWEATHER_API_KEY not set in .env file or environment');
     return;
   }
 
