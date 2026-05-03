@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:dotenv/dotenv.dart' as dotenv;
 
 void main() async {
-  // Load from .env file for local development
   final env = dotenv.DotEnv(includePlatformEnvironment: true)..load();
   final apiKey = env['OPENWEATHER_API_KEY'] ?? '';
 
