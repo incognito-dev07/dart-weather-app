@@ -21,3 +21,4 @@ A real-time weather application built with Dart and OpenWeatherMap API.
 ```
 OPENWEATHER_API_KEY=your_api_key_here
 ```
+
